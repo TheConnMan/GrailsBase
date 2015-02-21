@@ -11,5 +11,6 @@ class UrlMappings {
         "/controllers"(view:'/index')
 		'/oauth/askToCreateAccount'(controller: 'springSecurityOAuth', action: 'askToCreateAccount')
         "500"(view:'/error')
+		"404"(view:'/404')
 	}
 }
