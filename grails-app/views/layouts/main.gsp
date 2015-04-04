@@ -9,7 +9,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><g:layoutTitle default="Grails"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<g:javascript src="jquery.min.js" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js" charset="utf-8"></script>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
 		<g:layoutHead/>
@@ -20,7 +20,6 @@
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<r:layoutResources />
 	</body>
 </html>
