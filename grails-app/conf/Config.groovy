@@ -10,7 +10,7 @@
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
-
+import com.theconnman.slacklogger.SlackAppender
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 
 def loc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
@@ -100,21 +100,25 @@ environments {
 log4j = {
     // Example of changing the log pattern for the default console appender:
     //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+	appenders {
+		console name: 'stdout', threshold: org.apache.log4j.Level.ERROR
+		rollingFile name: 'info', file: 'logs/info.log', layout: pattern(conversionPattern: '[%p] %d{yyyy-MM-dd HH:mm:ss} %c{2} - %m%n'), threshold: org.apache.log4j.Level.INFO
+		rollingFile name: 'warn', file: 'logs/warn.log', layout: pattern(conversionPattern: '[%p] %d{yyyy-MM-dd HH:mm:ss} %c{2} - %m%n'), threshold: org.apache.log4j.Level.WARN
+	}
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+	warn 'warn': [
+		'grails.app.controllers.com.theconnman',
+		'grails.app.services.com.theconnman',
+		'grails.app.conf.com.theconnman',
+		'grails.app.domain.com.theconnman'
+	]
+
+	info 'info': [
+		'grails.app.controllers.com.theconnman',
+		'grails.app.services.com.theconnman',
+		'grails.app.conf.com.theconnman',
+		'grails.app.domain.com.theconnman'
+	]
 }
 
 grails.app.context = '/'
