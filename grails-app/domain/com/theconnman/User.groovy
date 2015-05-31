@@ -5,7 +5,8 @@ class User {
 	transient springSecurityService
 
 	String username
-	String password
+	String password = generator()
+	String avatarUrl
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -16,6 +17,7 @@ class User {
 	static constraints = {
 		username blank: false, unique: true
 		password blank: false
+		avatarUrl nullable: true
 	}
 
 	static mapping = {
@@ -38,5 +40,11 @@ class User {
 
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
+	}
+
+	String generator(int len = 20) {
+		Random rand = new Random();
+		String alpha = (('A'..'Z') + ('a'..'z') + ('0'..'9')).join();
+		return (1..len).collect { alpha[rand.nextInt(alpha.length())] }.join();
 	}
 }

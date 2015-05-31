@@ -4,8 +4,8 @@ import com.theconnman.UserRole
 
 class BootStrap {
 	
-	def createUser(name, password, role) {
-		def me = new User(username: name, password: password, enabled: true).save()
+	def createUser(name, role) {
+		User me = new User(username: name).save()
 		UserRole.create(me, role, true)
 	}
 
@@ -13,9 +13,9 @@ class BootStrap {
 		println 'Bootstrapping'
 		def adminRole = new Role(authority: "ROLE_ADMIN").save()
 		def userRole = new Role(authority: "ROLE_USER").save()
-		createUser('admin', 'theconnman', adminRole)
-		createUser('user', 'theconnman', userRole)
+		createUser('TheConnMan', adminRole);
     }
+
     def destroy = {
 		
     }

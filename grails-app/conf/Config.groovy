@@ -74,13 +74,26 @@ grails.exceptionresolver.params.exclude = ['password']
 grails.hibernate.cache.queries = false
 
 environments {
-    development {
-        grails.logging.jul.usebridge = true
-    }
-    production {
-        grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
-    }
+	development {
+		grails.logging.jul.usebridge = true
+	}
+	production {
+		grails.logging.jul.usebridge = false
+		// TODO: grails.serverURL = "http://www.changeme.com"
+	}
+}
+
+oauth {
+	providers {
+		github {
+			api = com.theconnman.GitHubApi
+			key = ''
+			secret = ''
+			successUri = '/github'
+			failureUri = '/error'
+			callback = "http://localhost:8080/oauth/github/callback"
+		}
+	}
 }
 
 // log4j configuration
