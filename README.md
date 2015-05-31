@@ -8,7 +8,6 @@ A base Grails project to bootstrap rapid development projects. The project inclu
 ## Grails Plugins
 
 - [Quartz](http://grails.org/plugin/quartz) - Job scheduling
-- [Executor](http://www.grails.org/plugin/executor) - Background threading
 - [Spring Security](http://grails.org/plugin/spring-security-core) - Basic Grails security
 
 ## Libraries

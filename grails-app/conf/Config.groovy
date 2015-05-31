@@ -1,20 +1,7 @@
-// locations to search for config files that get merged into the main config;
-// config files can be ConfigSlurper scripts, Java properties files, or classes
-// in the classpath in ConfigSlurper format
+//def loc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
+//def localConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(loc).toURI().toURL())
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
-
-// if (System.properties["${appName}.config.location"]) {
-//    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
-// }
-import com.theconnman.slacklogger.SlackAppender
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
-
-def loc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
-def localConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(loc).toURI().toURL())
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
